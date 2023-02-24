@@ -13,13 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-
-Route::get('/students', [\App\Http\Controllers\StudentController::class, 'index'])->name('student');
-Route::get('/students/create', [\App\Http\Controllers\StudentController::class, 'create'])->name('students.create');
-Route::post('/students', [\App\Http\Controllers\StudentController::class, 'store'])->name('students.store');
-Route::get('students/{student}', [\App\Http\Controllers\StudentController::class, 'show'])->name('students.show');
-});
-
-//Route::get('/students/{student}', 'App\Http\Controllers\StudentController@show')->name('students.show');
+Route::get('/', [App\Http\Controllers\WebController::class, 'welcome']);
+Route::get('/list', [App\Http\Controllers\WebController::class, 'list_student']);
+Route::get('/create', [App\Http\Controllers\WebController::class, 'create']);
+Route::post('/create', [App\Http\Controllers\WebController::class, 'store'])->name("create_student");
